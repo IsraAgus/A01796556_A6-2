@@ -11,6 +11,7 @@ from reservation_system.storage import (
     write_json,
 )
 from reservation_system.models import Hotel
+from tests.helpers import sample_hotel_two
 
 
 def test_write_and_read_json_roundtrip(tmp_path: Path) -> None:
@@ -78,13 +79,7 @@ def test_serialize_items() -> None:
             total_rooms=5,
             available_rooms=5,
         ),
-        Hotel(
-            hotel_id="H2",
-            name="Hotel Two",
-            location="CDMX",
-            total_rooms=3,
-            available_rooms=1,
-        ),
+        sample_hotel_two(),
     ]
     serialized = serialize_items(hotels)
 

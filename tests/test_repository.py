@@ -13,6 +13,7 @@ from reservation_system.repository import (
     save_hotels,
     save_reservations,
 )
+from tests.helpers import sample_hotel_two
 
 
 def test_save_and_load_hotels_roundtrip(tmp_path: Path) -> None:
@@ -25,13 +26,7 @@ def test_save_and_load_hotels_roundtrip(tmp_path: Path) -> None:
             total_rooms=2,
             available_rooms=2,
         ),
-        "H2": Hotel(
-            hotel_id="H2",
-            name="Hotel Two",
-            location="CDMX",
-            total_rooms=3,
-            available_rooms=1,
-        ),
+        "H2": sample_hotel_two(),
     }
 
     save_hotels(path, hotels)
