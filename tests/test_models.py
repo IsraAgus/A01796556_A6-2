@@ -1,4 +1,5 @@
 """Unit tests for domain models."""
+# pylint: disable=duplicate-code
 
 import pytest
 
