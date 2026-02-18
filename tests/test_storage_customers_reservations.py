@@ -20,17 +20,32 @@ def test_parse_customers_valid_and_invalid_entries() -> None:
 
 def test_parse_customers_non_list_returns_empty() -> None:
     customers = parse_customers({"not": "a-list"})
-    assert customers == []
+    assert not customers
 
 
 def test_parse_reservations_valid_and_invalid_entries() -> None:
     payload = [
-        {"reservation_id": "R1", "customer_id": "C1", "hotel_id": "H1", "status": "ACTIVE"},
-        {"reservation_id": "R2", "customer_id": "C1", "hotel_id": "H1", "status": "CANCELLED"},
+        {
+            "reservation_id": "R1",
+            "customer_id": "C1",
+            "hotel_id": "H1",
+            "status": "ACTIVE",
+        },
+        {
+            "reservation_id": "R2",
+            "customer_id": "C1",
+            "hotel_id": "H1",
+            "status": "CANCELLED",
+        },
         {"reservation_id": "", "customer_id": "C1", "hotel_id": "H1"},
         {"reservation_id": "R4", "customer_id": "", "hotel_id": "H1"},
         {"reservation_id": "R5", "customer_id": "C1", "hotel_id": ""},
-        {"reservation_id": "R6", "customer_id": "C1", "hotel_id": "H1", "status": "INVALID"},
+        {
+            "reservation_id": "R6",
+            "customer_id": "C1",
+            "hotel_id": "H1",
+            "status": "INVALID",
+        },
         "not-a-dict",
     ]
 
@@ -42,4 +57,4 @@ def test_parse_reservations_valid_and_invalid_entries() -> None:
 
 def test_parse_reservations_non_list_returns_empty() -> None:
     reservations = parse_reservations({"not": "a-list"})
-    assert reservations == []
+    assert not reservations

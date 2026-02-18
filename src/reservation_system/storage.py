@@ -67,7 +67,11 @@ def parse_hotels(payload: Any) -> list[Hotel]:
         total_rooms = _safe_int(item.get("total_rooms"))
         available_rooms = _safe_int(item.get("available_rooms"))
 
-        if not (_is_non_empty_str(hotel_id) and _is_non_empty_str(name) and _is_non_empty_str(location)):
+        if not (
+            _is_non_empty_str(hotel_id)
+            and _is_non_empty_str(name)
+            and _is_non_empty_str(location)
+        ):
             print(f"ERROR: Invalid hotel fields at index {idx}.")
             continue
         if total_rooms is None or available_rooms is None:
@@ -85,7 +89,9 @@ def parse_hotels(payload: Any) -> list[Hotel]:
                 )
             )
         except ValueError as exc:
-            print(f"ERROR: Hotel validation error at index {idx}: {exc}")
+            print(
+                f"ERROR: Hotel validation error at index {idx}: {exc}"
+            )
             continue
 
     return hotels
@@ -107,7 +113,11 @@ def parse_customers(payload: Any) -> list[Customer]:
         name = item.get("name")
         email = item.get("email")
 
-        if not (_is_non_empty_str(customer_id) and _is_non_empty_str(name) and _is_non_empty_str(email)):
+        if not (
+            _is_non_empty_str(customer_id)
+            and _is_non_empty_str(name)
+            and _is_non_empty_str(email)
+        ):
             print(f"ERROR: Invalid customer fields at index {idx}.")
             continue
 
@@ -133,7 +143,11 @@ def parse_reservations(payload: Any) -> list[Reservation]:
         hotel_id = item.get("hotel_id")
         status = item.get("status", "ACTIVE")
 
-        if not (_is_non_empty_str(reservation_id) and _is_non_empty_str(customer_id) and _is_non_empty_str(hotel_id)):
+        if not (
+            _is_non_empty_str(reservation_id)
+            and _is_non_empty_str(customer_id)
+            and _is_non_empty_str(hotel_id)
+        ):
             print(f"ERROR: Invalid reservation fields at index {idx}.")
             continue
 
@@ -147,7 +161,9 @@ def parse_reservations(payload: Any) -> list[Reservation]:
                 )
             )
         except ValueError as exc:
-            print(f"ERROR: Reservation validation error at index {idx}: {exc}")
+            print(
+                f"ERROR: Reservation validation error at index {idx}: {exc}"
+            )
             continue
 
     return reservations
