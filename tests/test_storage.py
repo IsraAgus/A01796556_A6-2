@@ -42,8 +42,20 @@ def test_parse_hotels_filters_invalid_entries() -> None:
             "total_rooms": 10,
             "available_rooms": 10,
         },
-        {"hotel_id": "", "name": "Bad", "location": "X", "total_rooms": 1, "available_rooms": 1},
-        {"hotel_id": "H3", "name": "BadRooms", "location": "X", "total_rooms": 10, "available_rooms": 11},
+        {
+            "hotel_id": "",
+            "name": "Bad",
+            "location": "X",
+            "total_rooms": 1,
+            "available_rooms": 1,
+        },
+        {
+            "hotel_id": "H3",
+            "name": "BadRooms",
+            "location": "X",
+            "total_rooms": 10,
+            "available_rooms": 11,
+        },
         "not-a-dict",
     ]
 
@@ -54,13 +66,25 @@ def test_parse_hotels_filters_invalid_entries() -> None:
 
 def test_parse_hotels_non_list_returns_empty() -> None:
     hotels = parse_hotels({"not": "a-list"})
-    assert hotels == []
+    assert not hotels
 
 
 def test_serialize_items() -> None:
     hotels = [
-        Hotel(hotel_id="H1", name="Hotel One", location="GDL", total_rooms=5, available_rooms=5),
-        Hotel(hotel_id="H2", name="Hotel Two", location="CDMX", total_rooms=3, available_rooms=1),
+        Hotel(
+            hotel_id="H1",
+            name="Hotel One",
+            location="GDL",
+            total_rooms=5,
+            available_rooms=5,
+        ),
+        Hotel(
+            hotel_id="H2",
+            name="Hotel Two",
+            location="CDMX",
+            total_rooms=3,
+            available_rooms=1,
+        ),
     ]
     serialized = serialize_items(hotels)
 

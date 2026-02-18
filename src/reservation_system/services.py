@@ -38,7 +38,11 @@ def add_customer(customers: dict[str, Customer], customer: Customer) -> None:
     customers[customer.customer_id] = customer
 
 
-def update_customer(customers: dict[str, Customer], customer_id: str, **changes) -> None:
+def update_customer(
+    customers: dict[str, Customer],
+    customer_id: str,
+    **changes,
+) -> None:
     """Update an existing customer."""
     if customer_id not in customers:
         raise KeyError("Customer not found.")
@@ -73,7 +77,10 @@ def create_reservation(
     if hotel.available_rooms <= 0:
         raise ValueError("No available rooms.")
 
-    hotels[reservation.hotel_id] = replace(hotel, available_rooms=hotel.available_rooms - 1)
+    hotels[reservation.hotel_id] = replace(
+        hotel,
+        available_rooms=hotel.available_rooms - 1,
+    )
     reservations[reservation.reservation_id] = reservation
 
 
@@ -97,5 +104,8 @@ def cancel_reservation(
     if hotel.available_rooms >= hotel.total_rooms:
         raise ValueError("Hotel room count inconsistent.")
 
-    hotels[res.hotel_id] = replace(hotel, available_rooms=hotel.available_rooms + 1)
+    hotels[res.hotel_id] = replace(
+        hotel,
+        available_rooms=hotel.available_rooms + 1,
+    )
     reservations[reservation_id] = replace(res, status="CANCELLED")
