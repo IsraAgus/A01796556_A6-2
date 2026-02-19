@@ -27,3 +27,19 @@ All execution outputs will be stored under `evidence/`:
 - coverage report
 - flake8 output
 - pylint output
+
+## Quickstart
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+## Run tests
+pytest -q
+
+## Coverage
+python -m coverage run -m pytest
+python -m coverage report -m
+
+## Linters
+flake8 src tests
+pylint src tests
