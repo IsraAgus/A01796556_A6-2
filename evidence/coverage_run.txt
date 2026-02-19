@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.7, pytest-8.3.4, pluggy-1.6.0
+rootdir: /Users/israelvargas/Library/Mobile Documents/com~apple~CloudDocs/Documentos ITESM - MNA/Trimestre 6/Pruebas de Software y Aseguramiento de la Calidad/Módulo 2/Semana 6/Tareas/A01796556_A6-2
+collected 42 items
+
+tests/test_models.py ........                                            [ 19%]
+tests/test_repository.py .....                                           [ 30%]
+tests/test_services.py .................                                 [ 71%]
+tests/test_storage.py ......                                             [ 85%]
+tests/test_storage_customers_reservations.py ....                        [ 95%]
+tests/test_storage_error_messages.py ..                                  [100%]
+
+============================== 42 passed in 0.04s ==============================
